@@ -6,7 +6,7 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +26,7 @@ import java.util.Calendar
 
 class WeeksAdapter
 (private val mContext: Context, private val mToday: Calendar, val monthColor: Int,val selectedDayTextColor: Int, val currentDayTextColor: Int, val pastDayTextColor: Int,
- val circleColor: Drawable?, val cellPastBackgroundColor: Int, val cellNowadaysDayColor: Int) : RecyclerView.Adapter<WeeksAdapter.WeekViewHolder>() {
+ val circleColor: Drawable?, val cellPastBackgroundColor: Int, val cellNowadaysDayColor: Int) : androidx.recyclerview.widget.RecyclerView.Adapter<WeeksAdapter.WeekViewHolder>() {
     override fun getItemCount(): Int {
         return weeksList.size
     }
@@ -72,7 +72,7 @@ class WeeksAdapter
     }
 
 
-    inner class WeekViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class WeekViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         /**
          * List of layout containers for each day
@@ -98,8 +98,8 @@ class WeeksAdapter
                 val cellItem = mCells!![c]
                 val txtDay = cellItem.findViewById(R.id.view_day_day_label) as TextView
                 val txtMonth = cellItem.findViewById(R.id.view_day_month_label) as TextView
-                val circleView = cellItem.findViewById(R.id.view_day_circle_selected)
-                val point = cellItem.findViewById(R.id.point)
+                val circleView = cellItem.findViewById(R.id.view_day_circle_selected)  as View
+                val point = cellItem.findViewById(R.id.point) as View
                 cellItem.setOnClickListener({ v -> BusProvider.instance.send(Events.DayClickedEvent(dayItem)) })
 
                 circleView.setBackgroundDrawable(circleColor)

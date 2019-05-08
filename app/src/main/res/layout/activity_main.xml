@@ -14,10 +14,10 @@
         agendaCalendar:calendarCurrentDayTextColor="@color/main_blue"
         agendaCalendar:calendarSelectedDayTextColor="@color/white"
         agendaCalendar:calendarMonthTextColor="@color/black"
-        agendaCalendar:calendarHeaderColor="@color/main_blue"
+        agendaCalendar:calendarHeaderColor="@android:color/transparent"
         agendaCalendar:circleBackgroundColor="@drawable/selected_day_background"
-        agendaCalendar:calendarPastDayTextColor="@android:color/darker_gray"
-        agendaCalendar:cellPastBackgroundColor="@color/calendar_past_days_bg"
+        agendaCalendar:calendarPastDayTextColor="#666666"
+        agendaCalendar:cellPastBackgroundColor="@color/white"
         agendaCalendar:cellNowadaysDayColor="@color/white"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp" />

@@ -3,7 +3,7 @@ package com.ognev.kotlin.agendacalendarview.agenda
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.support.v4.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import android.util.AttributeSet
 import android.view.*
 import android.widget.FrameLayout

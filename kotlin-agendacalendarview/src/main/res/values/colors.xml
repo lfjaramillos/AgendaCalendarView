@@ -20,10 +20,10 @@
 	<color name="theme_light_primary">#BBDEFB</color>
 	<color name="theme_accent">#FFEB3B</color>
 	<color name="theme_text_icons">#FFFFFF</color>
-	<color name="background_pale_grey">#f6f7fb</color>
+	<color name="background_pale_grey">#f2f2f2</color>
 	<color name="text_light_color">#7685a1</color>
 	<color name="empty_event">#7685a2</color>
-	<color name="divider_light_color">#e5edf6</color>
+	<color name="divider_light_color">#c8c7cc</color>
 	<color name="white">#ffffff</color>
 	<color name="reception_status_blue">#1badf8</color>
 	<color name="text_color_blue">#2a69a3</color>

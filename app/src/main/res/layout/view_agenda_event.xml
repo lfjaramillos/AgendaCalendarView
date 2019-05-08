@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -14,27 +15,39 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="16dp"
-            android:text="14:30"
-            android:textAllCaps="true"
-            android:textColor="@color/text_light_color"
-            android:textSize="11sp" />
-
-        <View
-            android:layout_width="1dp"
+        <LinearLayout
+            android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:background="@color/reception_status_blue" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/white"
+                android:text="14:30"
+                android:textAllCaps="true"
+                android:textColor="#515151"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:text="30m"
+                android:textColor="#666666"
+
+                android:textSize="13sp" />
+        </LinearLayout>
+
+
 
         <RelativeLayout
             android:id="@+id/layout_item_reception"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_azure"
             android:gravity="center_vertical"
             android:orientation="vertical"
             android:paddingBottom="7dp"
@@ -46,20 +59,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:text="Happy Birthday!!!"
-                android:textColor="@color/text_color_blue"
-                android:textSize="14dp" />
+                android:fontFamily="sans-serif-medium"
+                android:text="SKM Wireframes Checkout"
+                android:textColor="#4479af"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="18dp"
+                android:layout_below="@id/name"
+                android:layout_alignParentLeft="true"
+                app:srcCompat="@drawable/map_marker_font_awesome" />
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_below="@id/name"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif"
                 android:maxLines="2"
-                android:text="Awesome day!!!"
-                android:textColor="@color/text_color_blue"
-                android:textSize="12sp" />
+                android:text="ROOM - BCN - Diagonal - 4 - 4 - 6 …"
+                android:textColor="#666666"
+                android:textSize="13sp"
+                android:textStyle="normal" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -67,7 +93,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.3dp"
-        android:layout_marginLeft="53dp"
         android:background="@color/divider_light_color" />
 </LinearLayout>
 

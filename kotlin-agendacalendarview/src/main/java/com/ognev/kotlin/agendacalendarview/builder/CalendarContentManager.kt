@@ -26,7 +26,7 @@ class CalendarContentManager(
 
     /*default Locale */
     init {
-        locale = Locale.ENGLISH
+        locale = Locale.getDefault()
     }
 
     fun setDateRange(minDate: Calendar, maxDate: Calendar) {

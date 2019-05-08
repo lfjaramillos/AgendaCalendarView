@@ -2,7 +2,8 @@ package com.ognev.kotlin.agendacalendarview.sample
 
 import android.os.AsyncTask
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
@@ -44,14 +45,14 @@ class MainActivity : AppCompatActivity(), CalendarController {
 
         contentManager = CalendarContentManager(this, agenda_calendar_view, SampleEventAgendaAdapter(applicationContext))
 
-        contentManager.locale = Locale.ENGLISH
+        contentManager.locale = Locale.getDefault()
         contentManager.setDateRange(minDate, maxDate)
 
 
         val maxLength = Calendar.getInstance().getMaximum(Calendar.DAY_OF_MONTH)
 
         for (i in 1..maxLength) {
-            val day = Calendar.getInstance(Locale.ENGLISH)
+            val day = Calendar.getInstance(Locale.getDefault())
             day.timeInMillis = System.currentTimeMillis()
             day.set(Calendar.DAY_OF_MONTH, i)
 
@@ -75,19 +76,26 @@ class MainActivity : AppCompatActivity(), CalendarController {
     override fun getEventLayout() = R.layout.view_agenda_event
 
     override fun onDaySelected(dayItem: IDayItem) {
-    }
+        Toast.makeText(this, "item: ".plus(dayItem.value), Toast.LENGTH_SHORT).show()
+        val selected = Calendar.getInstance(Locale.getDefault())
+        selected.timeInMillis = dayItem.date.time
+        SampleEventAgendaAdapter.selectedDay = selected
+     }
 
     override fun onScrollToDate(calendar: Calendar) {
-        val lastPosition = agenda_calendar_view.agendaView.agendaListView.lastVisiblePosition + 1
-
+        val lastPosition = 1 //agenda_calendar_view.agendaView.agendaListView.getLastVisiblePosition() + 1
+        val eventSize = CalendarManager.getInstance(this).events.size
         val isSameDay = oldDate?.isSameDay(calendar) ?: false
-        if (isSameDay && lastPosition == CalendarManager.getInstance(this).events.size) {
+
+        SampleEventAgendaAdapter.selectedDay = calendar
+        if (lastPosition == eventSize || lastPosition == eventSize-1 ) {
+         
             if (!agenda_calendar_view.isCalendarLoading()) { // condition to prevent asynchronous requests
                 loadItemsAsync(false)
             }
         }
 
-        if (agenda_calendar_view.agendaView.agendaListView.firstVisiblePosition == 0) {
+        if (1 == 0) {
             val minCal = Calendar.getInstance()
             minCal.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH))
             if (calendar.get(Calendar.DAY_OF_MONTH) == minCal.get(Calendar.DAY_OF_MONTH)) {
@@ -136,7 +144,7 @@ class MainActivity : AppCompatActivity(), CalendarController {
 
 
                 for (i in 1..startMonthCal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
-                    val day = Calendar.getInstance(Locale.ENGLISH)
+                    val day = Calendar.getInstance(Locale.getDefault())
                     day.timeInMillis = System.currentTimeMillis()
                     day.set(Calendar.MONTH, startMonth)
                     day.set(Calendar.DAY_OF_MONTH, i)
@@ -146,7 +154,7 @@ class MainActivity : AppCompatActivity(), CalendarController {
 
                     eventList.add(MyCalendarEvent(day, day,
                             DayItem.buildDayItemFromCal(day),
-                            SampleEvent(name = "Awesome $i", description = "Event $i"))
+                            SampleEvent(name = "SKM Wireframes Checkout $i", description = "Event $i"))
                             .setEventInstanceDay(day))
                 }
             } else {
@@ -163,7 +171,7 @@ class MainActivity : AppCompatActivity(), CalendarController {
                 }
 
                 for (i in 1..endMonthCal.getActualMaximum(Calendar.DAY_OF_MONTH)) {
-                    val day = Calendar.getInstance(Locale.ENGLISH)
+                    val day = Calendar.getInstance(Locale.getDefault())
                     day.timeInMillis = System.currentTimeMillis()
                     day.set(Calendar.MONTH, endMonth)
                     day.set(Calendar.DAY_OF_MONTH, i)
@@ -178,13 +186,13 @@ class MainActivity : AppCompatActivity(), CalendarController {
                         day1.set(Calendar.DAY_OF_MONTH, i)
                         eventList.add(MyCalendarEvent(day, day,
                                 DayItem.buildDayItemFromCal(day),
-                                SampleEvent(name = "Awesome $i", description = "Event $i"))
+                                SampleEvent(name = "SKM Wireframes Checkout $i", description = "Event $i"))
                                 .setEventInstanceDay(day))
                     }
 
                     eventList.add(MyCalendarEvent(day, day,
                             DayItem.buildDayItemFromCal(day),
-                            SampleEvent(name = "Awesome $i", description = "Event $i"))
+                            SampleEvent(name = "SKM Wireframes Checkout $i", description = "Event $i"))
                             .setEventInstanceDay(day))
                 }
             }
